@@ -1,0 +1,24 @@
+# Completeness checklist for a source onboarding (read by the spec check and, later, the completeness skill).
+version: 1
+items:
+  - id: CL-01
+    text: Every input file has a column contract under specs/<KEY>/contracts/.
+    rule: ARCH-01
+  - id: CL-02
+    text: Every CDE-listed column has a sensitivity class recorded and its handling stated in the spec.
+    rule: CDO-03
+  - id: CL-03
+    text: Bronze, silver and gold models are named per NAME-01 and read only the layer below.
+    rule: ARCH-01
+  - id: CL-04
+    text: Every model key has not_null and unique tests; every silver model has a Soda contract.
+    rule: DQ-01
+  - id: CL-05
+    text: No warehouse-specific SQL outside adapter.dispatch macros.
+    rule: ARCH-02
+  - id: CL-06
+    text: Synthetic fixtures exist under tests/fixtures/ for every landing table and CI is green.
+    rule: CDO-03
+  - id: CL-07
+    text: The spec names a data owner and a data steward.
+    rule: CDO-03

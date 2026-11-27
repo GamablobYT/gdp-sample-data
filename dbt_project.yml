@@ -1,0 +1,21 @@
+name: property_ops
+version: "1.0.0"
+config-version: 2
+profile: property_ops
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests/data"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  property_ops:
+    bronze:
+      +materialized: view
+      +tags: ["bronze"]
+    silver:
+      +materialized: table
+      +tags: ["silver"]
+    gold:
+      +materialized: table
+      +tags: ["gold"]

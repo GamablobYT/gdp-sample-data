@@ -1,0 +1,10 @@
+# Column contract for leases.csv (lease register). Drives the bronze casts and the synthetic CI fixtures.
+file: leases.csv
+columns:
+  - {name: lease_id, type: integer, nullable: false}
+  - {name: property_id, type: varchar, nullable: false}
+  - {name: tenant_name, type: varchar, nullable: true}
+  - {name: start_date, type: date, nullable: false}
+  - {name: end_date, type: date, nullable: true}
+  - {name: monthly_rent, type: "decimal(12,2)", nullable: false}
+  - {name: currency, type: varchar, nullable: false, values: [GBP, EUR, USD]}

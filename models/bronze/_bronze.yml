@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: brz_leases
+    description: Typed lease register, one row per lease as received.
+    columns:
+      - name: lease_id
+        data_tests: [not_null, unique]
+      - name: monthly_rent
+        data_tests: [not_null]

@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: gld_rent_roll
+    description: Monthly rent roll per property and currency (consumed by the finance dashboard).
+    columns:
+      - name: property_id
+        data_tests: [not_null]
+      - name: monthly_rent_total
+        data_tests: [not_null]

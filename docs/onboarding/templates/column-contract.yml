@@ -1,0 +1,8 @@
+# specs/{JIRA-KEY}/contracts/<input-stem>.yml — one per input file. Used by load_intake (cast + contract check)
+# and generate_fixtures (synthetic CI rows). Types: integer, bigint, decimal(p,s), double, varchar, date,
+# timestamp, boolean.
+file: tenants.csv
+columns:
+  - {name: tenant_id, type: integer, nullable: false}
+  - {name: tenant_name, type: varchar, nullable: false}
+  - {name: contact_email, type: varchar, nullable: true}

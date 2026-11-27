@@ -1,0 +1,24 @@
+version: 2
+
+# Landing source: one table per input file, loaded "raw, as received" (all text) by the GDP app's load_intake
+# tool locally and by CI from tests/fixtures/<table>.csv. Bronze models cast per the column contract.
+sources:
+  - name: raw
+    schema: raw
+    description: Landed source files, as received.
+    tables:
+      - name: leases
+        description: Lease register export from the property management system (existing source).
+        columns:
+          - name: lease_id
+            data_tests: [not_null]
+          - name: property_id
+            data_tests: [not_null]
+          - name: tenant_name
+          - name: start_date
+            data_tests: [not_null]
+          - name: end_date
+          - name: monthly_rent
+            data_tests: [not_null]
+          - name: currency
+            data_tests: [not_null]

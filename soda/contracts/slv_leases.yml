@@ -1,0 +1,14 @@
+# Soda Core 4 data contract for silver leases. The data source name ("ticket") is bound by the app's soda_scan
+# tool to the ticket's warehouse; the dataset path is <data source>/<schema>/<table>.
+dataset: ticket/main/slv_leases
+columns:
+  - name: lease_id
+    checks:
+      - missing:
+  - name: monthly_rent
+    checks:
+      - missing:
+checks:
+  - row_count:
+      threshold:
+        must_be_greater_than: 0
