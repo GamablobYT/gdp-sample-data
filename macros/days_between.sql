@@ -1,4 +1,4 @@
-{#- Days between two dates. Warehouse-specific SQL lives only in adapter.dispatch macros (onboarding rule ARCH-02). -#}
+{#- Days between two dates. Warehouse-specific SQL lives only in adapter.dispatch macros (onboarding rule PORT-01). -#}
 {% macro days_between(start_col, end_col) -%}
     {{ return(adapter.dispatch('days_between', 'property_ops')(start_col, end_col)) }}
 {%- endmacro %}

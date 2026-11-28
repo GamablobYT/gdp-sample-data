@@ -1,0 +1,15 @@
+# Bronze source checks (CDO-20): severity WARN — a failure shows as a `warn` result and never fails the build.
+# Every result lands in the ticket schema's DQ_RESULTS table (written by soda_scan).
+dataset: ticket/main/brz_{entity}
+columns:
+  - name: "{cde_column}"
+    checks:
+      - missing:
+          name: "{cde_column}_missing_bronze"
+          attributes: {severity: warn, dq_rule: DQ-nn, cde: "{cde_column}"}
+checks:
+  - row_count:
+      name: brz_{entity}_rows
+      attributes: {severity: warn}
+      threshold:
+        must_be_greater_than: 0

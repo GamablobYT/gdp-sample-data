@@ -1,0 +1,13 @@
+# Soda contract template (CDO-20). One template per layer sets the severity: quality-check-bronze.yml (warn),
+# quality-check-silver.yml and quality-check-gold.yml (fail). The data source name `ticket` and the dataset
+# location are bound by the app's soda_scan tool to the ticket's warehouse (DuckDB main / the Snowflake ticket schema).
+dataset: ticket/main/{model}
+columns:
+  - name: "{key_column}"
+    checks:
+      - missing:
+          name: "{key_column}_missing"
+          attributes: {dq_rule: DQ-01, cde: "{key_column}", acceptance_criteria: []}
+      - duplicate:
+          name: "{key_column}_duplicate"
+          attributes: {dq_rule: DQ-02, cde: "{key_column}"}

@@ -1,0 +1,13 @@
+# Gold product checks (CDO-20): severity FAIL. Consumer-facing columns of the data product.
+dataset: ticket/main/gld_{product}
+columns:
+  - name: "{measure_column}"
+    checks:
+      - missing:
+          name: "{measure_column}_missing_gold"
+          attributes: {severity: fail, dq_rule: DQ-nn, acceptance_criteria: [AC-nn]}
+checks:
+  - row_count:
+      name: gld_{product}_rows
+      threshold:
+        must_be_greater_than: 0

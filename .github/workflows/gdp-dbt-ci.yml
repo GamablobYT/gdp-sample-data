@@ -1,0 +1,114 @@
+# GDP gap-fill CI (from the CBRE baseline ci-workflow.yml, sha256:8a441b94f527e258).
+# The repository's dbt-ci.yml already runs the warehouse-agnostic SQL lint, loads tests/fixtures/*.csv and runs
+# `dbt build` with the tests; this file does not repeat that. It adds only what dbt-ci.yml lacks: on a pull request
+# that adds no source models (a repository onboarding pull request) it runs `dbt parse`, `dbt compile` and the
+# existing unit tests, with no data build. Any other pull request runs `dbt build` and the tests on the synthetic fixtures, as dbt-ci.yml does.
+# - Repository variables (set by CBRE): GDP_WAREHOUSE (duckdb | snowflake; default duckdb), DBT_PROJECT_DIR
+#   (default .), and for Snowflake SNOWFLAKE_ACCOUNT, SNOWFLAKE_USER, SNOWFLAKE_ROLE, SNOWFLAKE_WAREHOUSE,
+#   SNOWFLAKE_DATABASE, SNOWFLAKE_SCHEMA. No CI secrets are read or written by this file.
+name: gdp-dbt-ci
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gdp-dbt-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  parse-compile:
+    name: dbt parse and compile (${{ vars.GDP_WAREHOUSE || 'duckdb' }})
+    runs-on: ubuntu-latest
+    env:
+      GDP_WAREHOUSE: ${{ vars.GDP_WAREHOUSE || 'duckdb' }}
+      DBT_PROJECT_DIR: ${{ vars.DBT_PROJECT_DIR || '.' }}
+      DBT_SEND_ANONYMOUS_USAGE_STATS: "False"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Does this change add source models?
+        id: scope
+        run: |
+          added=$(git diff --name-only --diff-filter=A "origin/${{ github.base_ref }}...HEAD" -- "$DBT_PROJECT_DIR" | grep -c '^.*models/.*\.sql$' || true)
+          if [ "$added" -gt 0 ]; then echo "build=true" >> "$GITHUB_OUTPUT"; else echo "build=false" >> "$GITHUB_OUTPUT"; fi
+          echo "source models added: $added (then dbt build and the tests run on the fixtures)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install dbt
+        run: |
+          python -m pip install --upgrade pip
+          if [ "$GDP_WAREHOUSE" = "snowflake" ]; then
+            pip install "dbt-core==1.12.7" "dbt-snowflake==1.12.5"
+          else
+            pip install "dbt-core==1.12.7" "dbt-duckdb==1.11.1" "duckdb==1.5.6"
+          fi
+
+      - name: Write the CI profile (no secrets for DuckDB)
+        run: |
+          python - <<'PY'
+          import os, pathlib, yaml
+          project = pathlib.Path(os.environ["DBT_PROJECT_DIR"])
+          profile = yaml.safe_load((project / "dbt_project.yml").read_text())["profile"]
+          out = pathlib.Path(os.environ["RUNNER_TEMP"]) / "profiles"
+          out.mkdir(parents=True, exist_ok=True)
+          if os.environ["GDP_WAREHOUSE"] == "snowflake":
+              target = {"type": "snowflake", "account": "{{ env_var('SNOWFLAKE_ACCOUNT') }}",
+                        "user": "{{ env_var('SNOWFLAKE_USER') }}",
+                        "authenticator": "oauth", "token": "{{ env_var('SNOWFLAKE_TOKEN') }}",
+                        "role": "{{ env_var('SNOWFLAKE_ROLE') }}", "warehouse": "{{ env_var('SNOWFLAKE_WAREHOUSE') }}",
+                        "database": "{{ env_var('SNOWFLAKE_DATABASE') }}", "schema": "{{ env_var('SNOWFLAKE_SCHEMA') }}",
+                        "threads": 4}
+          else:
+              target = {"type": "duckdb", "path": str(pathlib.Path(os.environ["RUNNER_TEMP"]) / "ci.duckdb"),
+                        "schema": "main", "threads": 4}
+          (out / "profiles.yml").write_text(yaml.safe_dump({profile: {"target": "ci", "outputs": {"ci": target}}}))
+          PY
+
+      - name: dbt parse, compile and existing unit tests (no source models added; no data build)
+        if: steps.scope.outputs.build != 'true'
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+          SNOWFLAKE_SCHEMA: ${{ vars.SNOWFLAKE_SCHEMA }}
+        run: |
+          dbt deps --project-dir "$DBT_PROJECT_DIR" --profiles-dir "$RUNNER_TEMP/profiles" || true
+          dbt parse --project-dir "$DBT_PROJECT_DIR" --profiles-dir "$RUNNER_TEMP/profiles" --target ci
+          dbt compile --project-dir "$DBT_PROJECT_DIR" --profiles-dir "$RUNNER_TEMP/profiles" --target ci
+          dbt test --select "test_type:unit" --project-dir "$DBT_PROJECT_DIR" --profiles-dir "$RUNNER_TEMP/profiles" --target ci
+
+      - name: Load synthetic fixtures (tests/fixtures/*.csv -> raw.<table>, all text)
+        if: env.GDP_WAREHOUSE == 'duckdb' && steps.scope.outputs.build == 'true'
+        run: |
+          python - <<'PY'
+          import os, pathlib, duckdb
+          con = duckdb.connect(str(pathlib.Path(os.environ["RUNNER_TEMP"]) / "ci.duckdb"))
+          con.execute("CREATE SCHEMA IF NOT EXISTS raw")
+          for f in sorted(pathlib.Path("tests/fixtures").glob("*.csv")):
+              con.execute(f'CREATE OR REPLACE TABLE raw."{f.stem}" AS '
+                          "SELECT * FROM read_csv(?, header=true, all_varchar=true)", [str(f)])
+          con.close()
+          PY
+
+      - name: dbt build (models and tests)
+        if: steps.scope.outputs.build == 'true'
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+          SNOWFLAKE_SCHEMA: ${{ vars.SNOWFLAKE_SCHEMA }}
+        run: |
+          dbt deps --project-dir "$DBT_PROJECT_DIR" --profiles-dir "$RUNNER_TEMP/profiles" || true
+          dbt build --project-dir "$DBT_PROJECT_DIR" --profiles-dir "$RUNNER_TEMP/profiles" --target ci

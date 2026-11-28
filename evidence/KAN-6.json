@@ -1,0 +1,940 @@
+{
+  "acceptance_criteria": [],
+  "acceptance_criteria_section": {
+    "applicable": false,
+    "count": 0,
+    "note": "Not applicable for a repository onboarding ticket"
+  },
+  "accepted_findings": [
+    {
+      "accepted_at": "2026-11-28T16:20:45.534Z",
+      "accepted_by": "@GamablobYT",
+      "file": ".github/workflows/gdp-dbt-ci.yml",
+      "finding_id": "01a221d9-045c-73e5-b313-84baee993440",
+      "line": 37,
+      "link": {
+        "sequence": 634,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=634"
+      },
+      "reviewer": "Edge Case Hunter",
+      "severity": "high",
+      "title": "Scope gate misses modified/renamed models and is loosely matched"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.542Z",
+      "accepted_by": "@GamablobYT",
+      "file": ".github/workflows/gdp-dbt-ci.yml",
+      "finding_id": "01a221d9-0463-71a2-819e-dd1831e19035",
+      "line": 68,
+      "link": {
+        "sequence": 635,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=635"
+      },
+      "reviewer": "Blind Hunter",
+      "severity": "high",
+      "title": "Snowflake path cannot authenticate and loads no fixtures"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.558Z",
+      "accepted_by": "@GamablobYT",
+      "file": ".github/workflows/gdp-dbt-ci.yml",
+      "finding_id": "01a221d9-046b-728e-b075-ce90fd11fb5e",
+      "line": 21,
+      "link": {
+        "sequence": 636,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=636"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "medium",
+      "title": "Overlaps dbt-ci.yml: duplicate builds, little added value, no lint"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.564Z",
+      "accepted_by": "@GamablobYT",
+      "file": ".github/workflows/gdp-dbt-ci.yml",
+      "finding_id": "01a221d9-0472-7287-a2c9-558885e527e7",
+      "line": 47,
+      "link": {
+        "sequence": 637,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=637"
+      },
+      "reviewer": "Blind Hunter",
+      "severity": "medium",
+      "title": "Python 3.14 with pinned dbt/duckdb versions is unverified"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.464Z",
+      "accepted_by": "@GamablobYT",
+      "file": ".github/workflows/gdp-dbt-ci.yml",
+      "finding_id": "01a221d9-0477-742e-85fb-d72d42bf6659",
+      "line": 43,
+      "link": {
+        "sequence": 625,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=625"
+      },
+      "reviewer": "Blind Hunter",
+      "severity": "low",
+      "title": "Script injection surface and masked git failure in scope step"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.471Z",
+      "accepted_by": "@GamablobYT",
+      "file": ".github/workflows/gdp-dbt-ci.yml",
+      "finding_id": "01a221d9-047b-74e6-ae42-fd1a19f14aed",
+      "line": 96,
+      "link": {
+        "sequence": 626,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=626"
+      },
+      "reviewer": "Edge Case Hunter",
+      "severity": "low",
+      "title": "Fixtures path ignores DBT_PROJECT_DIR; warehouse var handling inconsistent; deps errors masked"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.571Z",
+      "accepted_by": "@GamablobYT",
+      "file": "docs/onboarding/rules/quality-dq-platform.md",
+      "finding_id": "01a221d9-0481-7131-b683-62f073f9ed5a",
+      "line": 12,
+      "link": {
+        "sequence": 638,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=638"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "medium",
+      "title": "DQ-02 'bronze source checks warn' does not match the repo"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.577Z",
+      "accepted_by": "@GamablobYT",
+      "file": "docs/onboarding/rules/quality.md",
+      "finding_id": "01a221d9-0486-73cf-9412-20a7a08f23ec",
+      "line": 13,
+      "link": {
+        "sequence": 639,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=639"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "medium",
+      "title": "DQ-01 overstates gold and silver tests; weakens composite-grain coverage"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.583Z",
+      "accepted_by": "@GamablobYT",
+      "file": "docs/onboarding/rules/sensitive-data.md",
+      "finding_id": "01a221d9-048b-72cc-aa1a-4109cee3b5ae",
+      "line": 19,
+      "link": {
+        "sequence": 640,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=640"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "medium",
+      "title": "SENS-01 omits the CDO-17 contacts check and weakens BL-05/BL-16"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.478Z",
+      "accepted_by": "@GamablobYT",
+      "file": "docs/onboarding/rules/governance-owner-steward.md",
+      "finding_id": "01a221d9-0490-772d-b4a7-fcd4f003e17d",
+      "line": 9,
+      "link": {
+        "sequence": 627,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=627"
+      },
+      "reviewer": "Blind Hunter",
+      "severity": "low",
+      "title": "GOV-01 and spec template disagree on '@tbc'"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.485Z",
+      "accepted_by": "@GamablobYT",
+      "file": "docs/onboarding/templates/quality-check.yml",
+      "finding_id": "01a221d9-0495-7372-b6cf-1273c13bdfef",
+      "line": 1,
+      "link": {
+        "sequence": 628,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=628"
+      },
+      "reviewer": "Blind Hunter",
+      "severity": "low",
+      "title": "DQ-01/DQ-02 ids in templates collide with the DQ rule files"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.492Z",
+      "accepted_by": "@GamablobYT",
+      "file": "docs/onboarding/templates/quality-check-silver.yml",
+      "finding_id": "01a221d9-049b-723b-a77a-f4be38e30574",
+      "line": 1,
+      "link": {
+        "sequence": 629,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=629"
+      },
+      "reviewer": "Blind Hunter",
+      "severity": "low",
+      "title": "Link-rate check on enterprise ID column is unconditional"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.503Z",
+      "accepted_by": "@GamablobYT",
+      "file": "docs/onboarding/rules/naming.md",
+      "finding_id": "01a221d9-04a1-72d2-b91e-6285c4965573",
+      "line": 15,
+      "link": {
+        "sequence": 630,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=630"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "low",
+      "title": "NAME-01 omits baseline UPPER_SNAKE_CASE for Snowflake objects"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.511Z",
+      "accepted_by": "@GamablobYT",
+      "file": "docs/onboarding/checklist.yml",
+      "finding_id": "01a221d9-04a6-703e-88f7-c8d3c7d085eb",
+      "line": 87,
+      "link": {
+        "sequence": 631,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=631"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "low",
+      "title": "CL-04 has no baseline_id; header says every item is a baseline item"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.519Z",
+      "accepted_by": "@GamablobYT",
+      "file": "README.md",
+      "finding_id": "01a221d9-04ab-7555-8ef4-a10904a3e6ac",
+      "line": 12,
+      "link": {
+        "sequence": 632,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=632"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "low",
+      "title": "README describes dbt-ci.yml as a copy of the v1 template and omits gdp-dbt-ci.yml"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.526Z",
+      "accepted_by": "@GamablobYT",
+      "file": "models/bronze/brz_leases.sql",
+      "finding_id": "01a221d9-04b0-718a-8277-21abb52156e4",
+      "line": 1,
+      "link": {
+        "sequence": 633,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=633"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "low",
+      "title": "Model comment calls the leases-source example 'the contract'"
+    },
+    {
+      "accepted_at": "2026-11-28T16:20:45.589Z",
+      "accepted_by": "@GamablobYT",
+      "file": ".gitignore",
+      "finding_id": "01a221d9-04b9-7798-af74-b7a4e9022618",
+      "line": 1,
+      "link": {
+        "sequence": 641,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=641"
+      },
+      "reviewer": "Acceptance Auditor",
+      "severity": "info",
+      "title": "Working tree has uncommitted CRLF-only changes on about 19 files"
+    }
+  ],
+  "approvals": [
+    {
+      "alternative": null,
+      "at": "2026-11-28T05:50:50.387Z",
+      "head_sha": "5bbb449ff4b7e66fed921e636b1f53d69ceb41e8",
+      "kind": "approval",
+      "link": {
+        "sequence": 171,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=171"
+      },
+      "person_id": "01a21cea-3cf3-730c-88c5-7ad4ecb2990b",
+      "policy": "approval_policy v7",
+      "reason": null,
+      "refused_part": null,
+      "rule_file": null,
+      "rule_id": null,
+      "spec_blob_sha": null,
+      "subject": "Mary · gdp-knowledge-derivation",
+      "username": "@GamablobYT",
+      "version": null
+    },
+    {
+      "alternative": null,
+      "at": "2026-11-28T05:54:35.520Z",
+      "head_sha": "e69185b4a84ca7e6479e7de67a70ce8c561a46b5",
+      "kind": "approval",
+      "link": {
+        "sequence": 273,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=273"
+      },
+      "person_id": "01a21cea-3cf3-730c-88c5-7ad4ecb2990b",
+      "policy": "approval_policy v7",
+      "reason": null,
+      "refused_part": null,
+      "rule_file": null,
+      "rule_id": null,
+      "spec_blob_sha": null,
+      "subject": "Winston · gdp-knowledge-check",
+      "username": "@GamablobYT",
+      "version": null
+    },
+    {
+      "alternative": null,
+      "at": "2026-11-28T05:57:24.237Z",
+      "head_sha": "422e284e54fdea340b786d234e0c2a180739f8bd",
+      "kind": "approval",
+      "link": {
+        "sequence": 359,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=359"
+      },
+      "person_id": "01a21cea-3cf3-730c-88c5-7ad4ecb2990b",
+      "policy": "approval_policy v7",
+      "reason": null,
+      "refused_part": null,
+      "rule_file": null,
+      "rule_id": null,
+      "spec_blob_sha": null,
+      "subject": "Amelia · gdp-config-and-ci",
+      "username": "@GamablobYT",
+      "version": null
+    },
+    {
+      "alternative": null,
+      "at": "2026-11-28T16:20:45.426Z",
+      "head_sha": "422e284e54fdea340b786d234e0c2a180739f8bd",
+      "kind": "approval",
+      "link": {
+        "sequence": 624,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=624"
+      },
+      "person_id": "01a21cea-3cf3-730c-88c5-7ad4ecb2990b",
+      "policy": "approval_policy v7",
+      "reason": null,
+      "refused_part": null,
+      "rule_file": null,
+      "rule_id": null,
+      "spec_blob_sha": null,
+      "subject": "Code-review crew · bmad-code-review",
+      "username": "@GamablobYT",
+      "version": null
+    }
+  ],
+  "approvals_section": {
+    "applicable": true,
+    "count": 4,
+    "note": null
+  },
+  "chat_url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d",
+  "ci_note": "CI ran against DuckDB (local deployment).",
+  "completeness": null,
+  "completeness_section": {
+    "applicable": true,
+    "count": 5,
+    "note": null
+  },
+  "cost": {
+    "router": [
+      {
+        "handoff_id": "01a220c7-1218-721d-a42c-a04a2a50936f",
+        "input_tokens": 765,
+        "link": {
+          "sequence": 383,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=383"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 522,
+        "usd": null
+      },
+      {
+        "handoff_id": "01a220db-ffa2-70c9-a325-94756b21675a",
+        "input_tokens": 1152,
+        "link": {
+          "sequence": 426,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=426"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 52,
+        "usd": null
+      },
+      {
+        "handoff_id": "01a220e9-b034-74fc-ae38-4d00843e102c",
+        "input_tokens": 1179,
+        "link": {
+          "sequence": 431,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=431"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 264,
+        "usd": null
+      },
+      {
+        "handoff_id": "01a22304-ae7f-71c9-bf08-8e29878d3ac1",
+        "input_tokens": 1464,
+        "link": {
+          "sequence": 664,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=664"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 66,
+        "usd": null
+      }
+    ],
+    "runs": [
+      {
+        "credits": null,
+        "credits_label": "Not applicable on DuckDB",
+        "link": {
+          "sequence": 327,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=327"
+        },
+        "model": "brz_leases",
+        "persona": "amelia",
+        "rows": null,
+        "seconds": 0.012,
+        "step_id": "01a220b8-b8d4-7645-9fad-90415d030182",
+        "warehouse": "duckdb"
+      },
+      {
+        "credits": null,
+        "credits_label": "Not applicable on DuckDB",
+        "link": {
+          "sequence": 328,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=328"
+        },
+        "model": "slv_leases",
+        "persona": "amelia",
+        "rows": null,
+        "seconds": 0.007,
+        "step_id": "01a220b8-b8d4-7645-9fad-90415d030182",
+        "warehouse": "duckdb"
+      },
+      {
+        "credits": null,
+        "credits_label": "Not applicable on DuckDB",
+        "link": {
+          "sequence": 329,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=329"
+        },
+        "model": "gld_rent_roll",
+        "persona": "amelia",
+        "rows": null,
+        "seconds": 0.009,
+        "step_id": "01a220b8-b8d4-7645-9fad-90415d030182",
+        "warehouse": "duckdb"
+      }
+    ],
+    "steps": [
+      {
+        "cache_read_tokens": 1579021,
+        "cache_write_tokens": 281032,
+        "input_tokens": 61,
+        "link": {
+          "sequence": 79,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=79"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 23268,
+        "persona": "mary",
+        "skill": "gdp-knowledge-derivation",
+        "step_id": "01a2209a-9b50-779a-9861-b17d53832a74",
+        "usd": 1.101624
+      },
+      {
+        "cache_read_tokens": 1019201,
+        "cache_write_tokens": 103822,
+        "input_tokens": 42,
+        "link": {
+          "sequence": 268,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=268"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 10867,
+        "persona": "winston",
+        "skill": "gdp-knowledge-check",
+        "step_id": "01a220b5-4fd7-74e6-bb01-15095488d827",
+        "usd": 0.483873
+      },
+      {
+        "cache_read_tokens": 672896,
+        "cache_write_tokens": 76930,
+        "input_tokens": 34,
+        "link": {
+          "sequence": 354,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=354"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 10171,
+        "persona": "amelia",
+        "skill": "gdp-config-and-ci",
+        "step_id": "01a220b8-b8d4-7645-9fad-90415d030182",
+        "usd": 0.375551
+      },
+      {
+        "cache_read_tokens": 139829,
+        "cache_write_tokens": 36929,
+        "input_tokens": 14,
+        "link": {
+          "sequence": 410,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=410"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 1314,
+        "persona": "amelia",
+        "skill": "gdp-config-and-ci",
+        "step_id": "01a220c7-aca2-762b-ba10-2857a4c030e6",
+        "usd": 0.133149
+      },
+      {
+        "cache_read_tokens": 638462,
+        "cache_write_tokens": 176633,
+        "input_tokens": 40,
+        "link": {
+          "sequence": 492,
+          "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=492"
+        },
+        "model": "claude-sonnet-5-5",
+        "output_tokens": 12860,
+        "persona": "code-review-crew",
+        "skill": "bmad-code-review",
+        "step_id": "01a220e9-b199-772b-bdf4-cc22e830bbb8",
+        "usd": 1.416365
+      }
+    ],
+    "totals": {
+      "cache_read_tokens": 4049409,
+      "cache_write_tokens": 675346,
+      "credits": null,
+      "credits_label": "Not applicable on DuckDB",
+      "input_tokens": 4751,
+      "output_tokens": 59384,
+      "usd": 3.510562
+    }
+  },
+  "cost_section": {
+    "applicable": true,
+    "count": 9,
+    "note": null
+  },
+  "cutoff_sequence": 664,
+  "deployment_kind": "local",
+  "handoffs": [
+    {
+      "at": "2026-11-28T05:51:23.194Z",
+      "chosen_by": "Mary",
+      "from": "Mary",
+      "link": {
+        "sequence": 192,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=192"
+      },
+      "reason": "Derivation is approved; the next onboarding step is an independent check of the derived knowledge against its sources and the baseline, before the config and CI step.",
+      "sent_by": "@GamablobYT",
+      "to": "Winston · gdp-knowledge-check"
+    },
+    {
+      "at": "2026-11-28T05:55:06.687Z",
+      "chosen_by": "Winston",
+      "from": "Winston",
+      "link": {
+        "sequence": 295,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=295"
+      },
+      "reason": "Knowledge is approved; the remaining repository-onboarding step is the BMad config and CI workflow.",
+      "sent_by": "@GamablobYT",
+      "to": "Amelia · gdp-config-and-ci"
+    },
+    {
+      "at": "2026-11-28T06:11:26.620Z",
+      "chosen_by": "@GamablobYT",
+      "from": "Amelia",
+      "link": {
+        "sequence": 385,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=385"
+      },
+      "reason": "Config and CI are the approved remaining work for KAN-6, so Amelia verifies them against the rules before the ticket moves on.",
+      "sent_by": "@GamablobYT",
+      "to": "Amelia · gdp-config-and-ci"
+    },
+    {
+      "at": "2026-11-28T06:48:36.192Z",
+      "chosen_by": "@GamablobYT",
+      "from": "Amelia",
+      "link": {
+        "sequence": 433,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=433"
+      },
+      "reason": "The person explicitly asked to run the code review, which matches the Code-review crew's review of the repository onboarding change.",
+      "sent_by": "@GamablobYT",
+      "to": "Code-review crew · bmad-code-review"
+    }
+  ],
+  "handoffs_section": {
+    "applicable": true,
+    "count": 4,
+    "note": null
+  },
+  "head_sha": "422e284e54fdea340b786d234e0c2a180739f8bd",
+  "interruptions": [],
+  "jira_issue_key": "KAN-6",
+  "kind": "repository_onboarding",
+  "pr_number": 1,
+  "pr_url": "https://github.com/GamablobYT/gdp-sample-data/pull/1",
+  "proposals": [],
+  "proposals_section": {
+    "applicable": true,
+    "count": 0,
+    "note": null
+  },
+  "quality_checks": [
+    {
+      "acceptance_criteria": [],
+      "column": null,
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": null,
+      "name": "brz_leases",
+      "severity": null,
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "currency",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": null,
+      "name": "source_not_null_raw_leases_currency",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "lease_id",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": null,
+      "name": "source_not_null_raw_leases_lease_id",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "monthly_rent",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": null,
+      "name": "source_not_null_raw_leases_monthly_rent",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "property_id",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": null,
+      "name": "source_not_null_raw_leases_property_id",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "start_date",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": null,
+      "name": "source_not_null_raw_leases_start_date",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": null,
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": null,
+      "name": "slv_leases",
+      "severity": null,
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "lease_id",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "brz_leases",
+      "name": "not_null_brz_leases_lease_id",
+      "severity": "warn",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "monthly_rent",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "brz_leases",
+      "name": "not_null_brz_leases_monthly_rent",
+      "severity": "warn",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "lease_id",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "brz_leases",
+      "name": "unique_brz_leases_lease_id",
+      "severity": "warn",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": null,
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": null,
+      "name": "gld_rent_roll",
+      "severity": null,
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "currency",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "slv_leases",
+      "name": "accepted_values_slv_leases_currency__GBP__EUR__USD",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "lease_id",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "slv_leases",
+      "name": "not_null_slv_leases_lease_id",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "property_id",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "slv_leases",
+      "name": "not_null_slv_leases_property_id",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "lease_id",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "slv_leases",
+      "name": "unique_slv_leases_lease_id",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "monthly_rent_total",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "gld_rent_roll",
+      "name": "not_null_gld_rent_roll_monthly_rent_total",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    },
+    {
+      "acceptance_criteria": [],
+      "column": "property_id",
+      "dq_rule": null,
+      "link": {
+        "sequence": 330,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=330"
+      },
+      "model": "gld_rent_roll",
+      "name": "not_null_gld_rent_roll_property_id",
+      "severity": "fail",
+      "status": "pass",
+      "tool": "dbt_build"
+    }
+  ],
+  "quality_checks_section": {
+    "applicable": true,
+    "count": 17,
+    "note": null
+  },
+  "readiness_checks": [
+    {
+      "check_id": 3,
+      "reason": null,
+      "result": "pass",
+      "title": "Existing dbt project found"
+    },
+    {
+      "check_id": 4,
+      "reason": null,
+      "result": "pass",
+      "title": "AGENTS.md has the managed block"
+    },
+    {
+      "check_id": 5,
+      "reason": null,
+      "result": "pass",
+      "title": "Onboarding knowledge exists"
+    },
+    {
+      "check_id": 6,
+      "reason": null,
+      "result": "pass",
+      "title": "BMad config present"
+    },
+    {
+      "check_id": 7,
+      "reason": null,
+      "result": "pass",
+      "title": "CI workflow runs the dbt build and tests"
+    }
+  ],
+  "repository": "GamablobYT/gdp-sample-data",
+  "review_head_sha": "422e284e54fdea340b786d234e0c2a180739f8bd",
+  "review_section": {
+    "applicable": true,
+    "count": 18,
+    "note": null
+  },
+  "review_summary": "Review of gdp/KAN-6 at 422e284 (no spec; no-spec mode). Checklist keeps all 19 baseline items, templates match the baseline, and rule source paths exist. Main problems: the gdp-dbt-ci.yml scope gate and Snowflake path, a duplicate build alongside dbt-ci.yml, and several rule claims that do not match the code (DQ-01, DQ-02, SENS-01). Nothing was changed. I could not find the cause of the earlier failed gdp-config-and-ci step in the repo; the likeliest candidates are the CRLF-only working-tree changes or the added second workflow. These were not confirmed.",
+  "run_records": [
+    {
+      "credits": null,
+      "credits_label": "Not applicable on DuckDB",
+      "link": {
+        "sequence": 327,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=327"
+      },
+      "model": "brz_leases",
+      "persona": "amelia",
+      "rows": null,
+      "seconds": 0.012,
+      "step_id": "01a220b8-b8d4-7645-9fad-90415d030182",
+      "warehouse": "duckdb"
+    },
+    {
+      "credits": null,
+      "credits_label": "Not applicable on DuckDB",
+      "link": {
+        "sequence": 328,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=328"
+      },
+      "model": "slv_leases",
+      "persona": "amelia",
+      "rows": null,
+      "seconds": 0.007,
+      "step_id": "01a220b8-b8d4-7645-9fad-90415d030182",
+      "warehouse": "duckdb"
+    },
+    {
+      "credits": null,
+      "credits_label": "Not applicable on DuckDB",
+      "link": {
+        "sequence": 329,
+        "url": "http://localhost:3000/tickets/01a2209a-5ded-72ce-a363-edef5658833d?event=329"
+      },
+      "model": "gld_rent_roll",
+      "persona": "amelia",
+      "rows": null,
+      "seconds": 0.009,
+      "step_id": "01a220b8-b8d4-7645-9fad-90415d030182",
+      "warehouse": "duckdb"
+    }
+  ],
+  "run_records_section": {
+    "applicable": true,
+    "count": 3,
+    "note": null
+  },
+  "schema_version": 1,
+  "ticket_id": "01a2209a-5ded-72ce-a363-edef5658833d",
+  "title": "Make GamablobYT/gdp-sample-data ready for source onboarding",
+  "warehouse": {
+    "account": null,
+    "database": null,
+    "kind": "duckdb",
+    "role": null,
+    "schema": "gdp_kan_6",
+    "warehouse": null
+  }
+}

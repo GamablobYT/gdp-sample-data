@@ -1,0 +1,37 @@
+# Catalog entry for a data product — catalog/<product>.yml (CDO-16; CDO-07, CDO-14, CDO-15, CDO-18, CDO-20).
+# Kept as a file in the pull request while Collibra is disabled; Collibra publishes this file once enabled.
+# The app's check_output validates it against the branch: every CDE of the spec has a glossary term, every DQ rule
+# names a check or test that exists, every lineage entry names a Gold column of a Gold model and a source column of
+# the spec's column contracts, and every Gold model of the product is covered.
+data_product:
+  name: "{product}"
+  description: ""
+  domain: ""                 # business area, e.g. property
+  owner: "@owner"            # Git provider username from the spec (CDO-14)
+  steward: "@steward"        # Git provider username from the spec (CDO-14)
+  sensitivity: Internal      # Public | Internal | Confidential | Restricted (CDO-15)
+  retention: ""              # period from the spec (CDO-18)
+  consumption:
+    type: snowflake_share    # snowflake_share | rest_api (CDO-07)
+    share: "snowflake/shares/{product}.sql"
+  gold_models: []            # the product's Gold models
+
+glossary_terms:              # one per CDE
+  - term: ""
+    column: ""
+    definition: ""
+    sensitivity: Internal
+    cde: true
+
+dq_rules:                    # one per quality check (CDO-20)
+  - id: DQ-01
+    check: ""                # the Soda check name or dbt test name that implements it
+    covers: ""               # the CDE column or acceptance criterion (AC-01) it covers
+
+lineage:                     # every Gold column (CDO-16)
+  - gold_model: ""
+    gold_column: ""
+    source_file: ""          # the intake file, as in the spec's Inputs
+    source_column: ""
+    bronze: ""               # brz_<model>.<column>
+    silver: ""               # slv_<model>.<column>

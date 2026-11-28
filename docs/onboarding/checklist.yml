@@ -1,24 +1,89 @@
-# Completeness checklist for a source onboarding (read by the spec check and, later, the completeness skill).
+# Completeness checklist for a source onboarding, tailored from the CBRE baseline sha256:8a441b94f527e258.
+# Every baseline item is kept (baseline_id); renamed_from records the baseline wording where it was renamed to this
+# repository's terms. Rules cited are in docs/onboarding/rules/ or in the CBRE baseline.
 version: 1
 items:
-  - id: CL-01
-    text: Every input file has a column contract under specs/<KEY>/contracts/.
+  - id: BL-01
+    baseline_id: BL-01
+    text: Every input file has a column contract (names, types, nullability) under specs/<KEY>/contracts/.
     rule: ARCH-01
-  - id: CL-02
-    text: Every CDE-listed column has a sensitivity class recorded and its handling stated in the spec.
-    rule: CDO-03
-  - id: CL-03
-    text: Bronze, silver and gold models are named per NAME-01 and read only the layer below.
+    renamed_from: Every input file has a column contract (names, types, nullability) next to the spec.
+  - id: BL-02
+    baseline_id: BL-02
+    text: Data flows raw -> bronze (brz_) -> silver (slv_) -> gold (gld_); no layer is skipped.
     rule: ARCH-01
+    renamed_from: Data flows bronze (raw, as received) -> silver (cleansed) -> gold (business-ready); no layer is skipped.
+  - id: BL-03
+    baseline_id: BL-03
+    text: Models follow NAME-01 (brz_<entity>, slv_<entity>, gld_<subject>; snake_case) and read only the layer below.
+    rule: NAME-01
+    renamed_from: Models and objects follow the repository's naming rules.
+  - id: BL-04
+    baseline_id: BL-04
+    text: Every CDE has a definition and one sensitivity class (Public, Internal, Confidential, Restricted); the spec lists the class per column.
+    rule: SENS-01
+    renamed_from: Every CDE has a definition and one sensitivity class (Public, Internal, Confidential, Restricted).
+  - id: BL-05
+    baseline_id: BL-05
+    text: Personal data is at least Confidential and has an access rule.
+    rule: SENS-01
+  - id: BL-06
+    baseline_id: BL-06
+    text: The spec names a business data owner and a data steward.
+    rule: GOV-01
+  - id: BL-07
+    baseline_id: BL-07
+    text: Every mandatory CDE has at least one data quality check.
+    rule: DQ-02
+  - id: BL-08
+    baseline_id: BL-08
+    text: Every gold column traces to a source column (lineage).
+    rule: CDO-16
+  - id: BL-09
+    baseline_id: BL-09
+    text: The spec states a retention period by classification, the archival approach and the deletion process.
+    rule: CDO-18
+  - id: BL-10
+    baseline_id: BL-10
+    text: A new data product carries only attributes it owns plus keys to existing products.
+    rule: CDO-04
+  - id: BL-11
+    baseline_id: BL-11
+    text: Warehouse-specific SQL lives only in adapter.dispatch macros (PORT-01); synthetic fixtures exist under tests/fixtures/ for every landing table and CI is green.
+    rule: PORT-01
+    renamed_from: Warehouse-specific SQL lives only in adapter.dispatch macros; CI is green on synthetic fixtures.
+  - id: BL-12
+    baseline_id: BL-12
+    text: The data product declares how it is consumed and ships a consumer guide.
+    rule: CDO-08
+  - id: BL-13
+    baseline_id: BL-13
+    text: The catalog entry holds the data product (owner, steward, sensitivity, retention, consumption), a glossary term per CDE with its CDE flag and DQ rules naming the check that implements them.
+    rule: CDO-15
+  - id: BL-14
+    baseline_id: BL-14
+    text: Every Gold data product declares its share in the catalog entry and ships its share definition file (SELECT on Gold models only).
+    rule: CDO-07
+  - id: BL-15
+    baseline_id: BL-15
+    text: The catalog entry's lineage covers every Gold column back to its source file and column through bronze and silver.
+    rule: CDO-16
+  - id: BL-16
+    baseline_id: BL-16
+    text: Every model and classed column carries the governance metadata (dbt meta; Snowflake tags) and Confidential and Restricted columns name their access rule.
+    rule: CDO-17
+  - id: BL-17
+    baseline_id: BL-17
+    text: Every quality check and test result is recorded in the ticket schema's DQ results table with its DQ rule and acceptance-criterion IDs.
+    rule: CDO-20
+  - id: BL-18
+    baseline_id: BL-18
+    text: Records referring to master entities are linked to Enterprise IDs through the current crosswalk; unmatched records are on the action list and no ID is minted.
+    rule: CDO-10
+  - id: BL-19
+    baseline_id: BL-19
+    text: Every refusal is recorded in the spec's Refusals section with its rule ID, rule file and the compliant alternative a person approved (or the confirmed decline); nothing is built on an unapproved alternative.
+    rule: ARCH-03
   - id: CL-04
-    text: Every model key has not_null and unique tests; every silver model has a Soda contract.
+    text: Every single-column model key has not_null and unique tests; every silver model has a Soda contract.
     rule: DQ-01
-  - id: CL-05
-    text: No warehouse-specific SQL outside adapter.dispatch macros.
-    rule: ARCH-02
-  - id: CL-06
-    text: Synthetic fixtures exist under tests/fixtures/ for every landing table and CI is green.
-    rule: CDO-03
-  - id: CL-07
-    text: The spec names a data owner and a data steward.
-    rule: CDO-03
