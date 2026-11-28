@@ -16,7 +16,7 @@ interpretation: true
   Internal, Confidential, Restricted); the spec lists the class per column.
 - Personal data (names, e-mails, phone numbers) is at least Confidential and has a stated handling.
 - Confidential and Restricted columns are never exposed in gold models unless the spec names the consumer and the data
-  owner approved it. Prefer hashing or dropping them in silver (`gld_rent_roll` omits `tenant_name`).
+  owner approved it. Prefer hashing or dropping them before gold; here silver keeps `tenant_name` and `gld_rent_roll` omits it.
 - Intake files and real data are never committed; CI uses synthetic fixtures under `tests/fixtures/`.
 
 > Interpretation — confirm with CBRE

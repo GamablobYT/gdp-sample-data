@@ -7,6 +7,7 @@ items:
     baseline_id: BL-01
     text: Every input file has a column contract (names, types, nullability) under specs/<KEY>/contracts/.
     rule: ARCH-01
+    renamed_from: Every input file has a column contract (names, types, nullability) next to the spec.
   - id: BL-02
     baseline_id: BL-02
     text: Data flows raw -> bronze (brz_) -> silver (slv_) -> gold (gld_); no layer is skipped.
@@ -21,6 +22,7 @@ items:
     baseline_id: BL-04
     text: Every CDE has a definition and one sensitivity class (Public, Internal, Confidential, Restricted); the spec lists the class per column.
     rule: SENS-01
+    renamed_from: Every CDE has a definition and one sensitivity class (Public, Internal, Confidential, Restricted).
   - id: BL-05
     baseline_id: BL-05
     text: Personal data is at least Confidential and has an access rule.
@@ -83,5 +85,5 @@ items:
     text: Every refusal is recorded in the spec's Refusals section with its rule ID, rule file and the compliant alternative a person approved (or the confirmed decline); nothing is built on an unapproved alternative.
     rule: ARCH-03
   - id: CL-04
-    text: Every model key has not_null and unique tests; every silver model has a Soda contract.
+    text: Every single-column model key has not_null and unique tests; every silver model has a Soda contract.
     rule: DQ-01
